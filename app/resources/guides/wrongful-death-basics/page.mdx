@@ -1,0 +1,210 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/seo'
+import { DisclaimerBar } from '@/components/layout/disclaimer'
+import { JsonLd } from '@/components/seo/json-ld'
+import { TrackLink } from '@/components/track-link'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig } from '@/lib/content/site'
+
+export const metadata = buildMetadata(
+  'Georgia Wrongful Death Guide: First Steps for Families',
+  'A sensitive Georgia wrongful death basics guide covering first actions, documentation priorities, communication strategy, and when to contact counsel.',
+  '/resources/guides/wrongful-death-basics'
+)
+
+export const faqItems = [
+  {
+    question: 'Who can bring a wrongful death claim in Georgia?',
+    answer: 'Eligibility depends on current Georgia law and family circumstances. Verify standing and process directly with licensed counsel.'
+  },
+  {
+    question: 'How quickly should families act?',
+    answer: 'Timelines can be short. Early legal guidance can help preserve records and reduce avoidable mistakes.'
+  },
+  {
+    question: 'Should families speak with insurers immediately?',
+    answer: 'General information: keep communication factual and concise, and consider counsel before detailed interviews or releases.'
+  },
+  {
+    question: 'Does reading this guide create an attorney-client relationship?',
+    answer: 'No. This page provides general information only and does not create an attorney-client relationship.'
+  }
+]
+
+export const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Georgia Wrongful Death Guide: First Steps for Families',
+      description:
+        'General information for families after a preventable loss, including records, communication strategy, and legal process basics.',
+      author: { '@type': 'Organization', name: 'Dominant Law' },
+      publisher: { '@type': 'Organization', name: 'Dominant Law' },
+      mainEntityOfPage: `${siteConfig.domain}/resources/guides/wrongful-death-basics`,
+      about: ['Georgia wrongful death', 'family guidance', 'personal injury litigation']
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer }
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteConfig.domain}/` },
+        { '@type': 'ListItem', position: 2, name: 'Resources', item: `${siteConfig.domain}/resources` },
+        { '@type': 'ListItem', position: 3, name: 'Guides', item: `${siteConfig.domain}/resources/guides` },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: 'Wrongful death basics',
+          item: `${siteConfig.domain}/resources/guides/wrongful-death-basics`
+        }
+      ]
+    }
+  ]
+}
+
+<JsonLd data={structuredData} />
+
+<div className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:px-0">
+
+<nav aria-label="Breadcrumb" className="mb-6 text-sm text-mutedForeground">
+  <ol className="flex flex-wrap items-center gap-1">
+    <li><Link href="/" className="no-underline hover:text-foreground">Home</Link> /</li>
+    <li><Link href="/resources" className="no-underline hover:text-foreground">Resources</Link> /</li>
+    <li><Link href="/resources/guides" className="no-underline hover:text-foreground">Guides</Link> /</li>
+    <li className="text-foreground">Wrongful death basics</li>
+  </ol>
+</nav>
+
+<section className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card/45 p-6 md:p-8">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_8%_0%,rgba(214,177,84,0.2),transparent_38%)]" />
+  <div className="relative grid gap-6 md:grid-cols-[1fr,220px] md:items-center">
+    <div>
+      <Badge variant="secondary" className="mb-3">Georgia resource guide</Badge>
+      <h1 className="font-serif text-4xl leading-tight md:text-5xl">Wrongful death basics for Georgia families</h1>
+      <div className="mt-4 max-w-2xl text-lg text-mutedForeground">A clear, respectful overview of first steps, documentation priorities, and communication strategy after a preventable loss.</div>
+    </div>
+    <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border border-primary/45 bg-background/60 shadow-premium">
+      <Image src="/images/a_black_and_white_vector_logo_for_dominant_law.png" alt="Dominant Law lion crest" fill sizes="144px" className="object-contain p-3" />
+    </div>
+  </div>
+</section>
+
+<div className="mt-5">
+  <DisclaimerBar />
+</div>
+
+<section className="mt-8 grid gap-3 md:grid-cols-3">
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Immediate priority</p>
+    <p className="mt-2 text-sm">Centralize records and communications in one secure timeline.</p>
+  </div>
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Family priority</p>
+    <p className="mt-2 text-sm">Reduce decision fatigue by assigning one documentation coordinator.</p>
+  </div>
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Process priority</p>
+    <p className="mt-2 text-sm">Get legal guidance early when insurers or deadlines become active.</p>
+  </div>
+</section>
+
+<section className="mt-8 rounded-xl border border-border bg-card/30 p-5">
+  <h2 className="font-serif text-2xl">TL;DR checklist</h2>
+  <Checklist items={[
+    'Collect official reports, death-related records, and key provider information.',
+    'Save all insurer and third-party communications in one organized file.',
+    'Avoid signing releases or giving detailed recorded statements without review.',
+    'Track major dates, contacts, and requested documents in one timeline.',
+    'Use attorney guidance early when timelines, liability, or pressure escalate.'
+  ]} />
+</section>
+
+<section className="prose prose-invert mt-10 max-w-none">
+
+## First 72 hours: a practical approach
+
+Families often face urgent calls, paperwork, and emotional overload. A structured process can reduce risk and preserve options.
+
+### Stabilize communication
+
+Choose one family contact for external communications when possible. This limits conflicting statements and repeated stress.
+
+### Preserve core records
+
+Keep a secure list of reports, providers, claim numbers, and all written correspondence.
+
+## Evidence and documentation priorities
+
+Wrongful death matters are fact-intensive. Organized records can materially improve timeline clarity and legal evaluation.
+
+### Suggested record categories
+
+- Incident and investigative records.
+- Medical and death-related documentation.
+- Financial records relevant to support and loss analysis.
+- Communication logs with insurers and involved parties.
+
+## Insurance and third-party communications
+
+Insurers may request interviews or authorizations quickly. General practice is factual, concise communication and documented follow-up.
+
+### Do
+
+- Ask for requests in writing.
+- Keep date/time logs for every contact.
+- Preserve all letters, emails, and claim references.
+
+### Do not
+
+- Speculate about legal conclusions.
+- Sign broad releases without review.
+- Share confidential details through unsecured channels.
+
+## Georgia-specific note
+
+Timelines and legal requirements can be short and situation-specific. Verify current Georgia law and procedure before relying on generalized summaries.
+
+## When to call a lawyer now
+
+Escalate quickly if liability is disputed, multiple parties are involved, a lawsuit is threatened, or insurer pressure increases.
+
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/35 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Speak with a lawyer now</h2>
+  <p className="mt-2 text-sm text-mutedForeground">For case-specific guidance, use direct channels instead of sending sensitive details online.</p>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+    <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+    <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+  </div>
+  <div className="mt-4"><DisclaimerBar compact /></div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">Related pages</h2>
+  <div className="mt-3 grid gap-2 text-sm md:grid-cols-2">
+    <Link href="/practice-areas/wrongful-death" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Georgia wrongful death practice page</Link>
+    <Link href="/resources/guides/medical-documentation" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Medical documentation tips</Link>
+    <Link href="/resources/guides/insurance-adjusters" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Insurance adjuster communication guide</Link>
+    <Link href="/contact" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Start your free case evaluation</Link>
+  </div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">FAQs</h2>
+  <FAQ items={faqItems} />
+</section>
+
+<Callout tone="warning">Not legal advice. No attorney-client relationship. Do not send confidential information.</Callout>
+
+</div>

@@ -1,0 +1,151 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/seo'
+import { DisclaimerBar } from '@/components/layout/disclaimer'
+import { JsonLd } from '@/components/seo/json-ld'
+import { TrackLink } from '@/components/track-link'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig } from '@/lib/content/site'
+
+export const metadata = buildMetadata(
+  'Georgia Slip and Fall Evidence Guide',
+  'A practical guide to the evidence that matters most after a slip and fall incident in Georgia.',
+  '/resources/guides/slip-and-fall-evidence'
+)
+
+export const faqItems = [
+  {
+    question: 'What evidence matters most after a slip and fall?',
+    answer: 'Condition photos, witness details, incident documentation, and consistent medical records are core evidence categories.'
+  },
+  {
+    question: 'Should I file an incident report?',
+    answer: 'General information: timely documentation can preserve key details while conditions are still fresh.'
+  },
+  {
+    question: 'Can conditions change quickly at the location?',
+    answer: 'Yes. Hazard conditions can be altered quickly, which is why early documentation is often important.'
+  }
+]
+
+export const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Georgia Slip and Fall Evidence Guide',
+      author: { '@type': 'Organization', name: 'Dominant Law' },
+      publisher: { '@type': 'Organization', name: 'Dominant Law' },
+      mainEntityOfPage: `${siteConfig.domain}/resources/guides/slip-and-fall-evidence`,
+      about: ['Georgia slip and fall', 'premises liability', 'injury evidence']
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer }
+      }))
+    }
+  ]
+}
+
+<JsonLd data={structuredData} />
+
+<div className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:px-0">
+
+<nav aria-label="Breadcrumb" className="mb-6 text-sm text-mutedForeground">
+  <ol className="flex flex-wrap items-center gap-1">
+    <li><Link href="/" className="no-underline hover:text-foreground">Home</Link> /</li>
+    <li><Link href="/resources" className="no-underline hover:text-foreground">Resources</Link> /</li>
+    <li><Link href="/resources/guides" className="no-underline hover:text-foreground">Guides</Link> /</li>
+    <li className="text-foreground">Slip and fall evidence</li>
+  </ol>
+</nav>
+
+<section className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card/45 p-6 md:p-8">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_8%_0%,rgba(214,177,84,0.2),transparent_38%)]" />
+  <div className="relative grid gap-6 md:grid-cols-[1fr,220px] md:items-center">
+    <div>
+      <Badge variant="secondary" className="mb-3">Georgia resource guide</Badge>
+      <h1 className="font-serif text-4xl leading-tight md:text-5xl">Slip and fall: what evidence matters</h1>
+      <div className="mt-4 max-w-2xl text-lg text-mutedForeground">A clear checklist for preserving conditions, witness details, and records after a Georgia premises injury incident.</div>
+    </div>
+    <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border border-primary/45 bg-background/60 shadow-premium">
+      <Image src="/images/a_black_and_white_vector_logo_for_dominant_law.png" alt="Dominant Law lion crest" fill sizes="144px" className="object-contain p-3" />
+    </div>
+  </div>
+</section>
+
+<div className="mt-5"><DisclaimerBar /></div>
+
+<section className="mt-8 rounded-xl border border-border bg-card/30 p-5">
+  <h2 className="font-serif text-2xl">Quick checklist</h2>
+  <Checklist items={[
+    'Photograph hazard area, lighting, and surrounding conditions immediately.',
+    'Preserve footwear and clothing if relevant.',
+    'Collect witness names and any incident report details.',
+    'Keep medical documentation organized and time-stamped.',
+    'Avoid public commentary that could create factual confusion.'
+  ]} />
+</section>
+
+<section className="prose prose-invert mt-10 max-w-none">
+
+## Preserve the scene quickly
+
+Hazard conditions often change. Timely documentation can materially improve factual clarity.
+
+## Build a clean evidence file
+
+Organize documents so a timeline can be reviewed quickly and consistently.
+
+### Core file categories
+
+- Scene and condition photos.
+- Witness contacts and summary notes.
+- Incident documentation.
+- Medical records and visit chronology.
+
+## Communication strategy
+
+Keep statements factual and concise across all channels.
+
+### Do
+
+- Confirm basics with consistency.
+- Save all written communication.
+- Keep one central timeline.
+
+### Do not
+
+- Speculate about fault conclusions.
+- Discard shoes or clothing if relevant.
+- Sign releases before review.
+
+## Georgia note
+
+Legal requirements can be fact-specific and time-sensitive. Verify current law and process requirements directly with counsel.
+
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/35 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Need immediate guidance?</h2>
+  <p className="mt-2 text-sm text-mutedForeground">Use direct channels for case-specific help.</p>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+    <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+    <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+  </div>
+  <div className="mt-4"><DisclaimerBar compact /></div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">FAQs</h2>
+  <FAQ items={faqItems} />
+</section>
+
+<Callout tone="warning">Not legal advice. No attorney-client relationship. Do not send confidential information.</Callout>
+
+</div>

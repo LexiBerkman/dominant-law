@@ -1,0 +1,212 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/seo'
+import { DisclaimerBar } from '@/components/layout/disclaimer'
+import { JsonLd } from '@/components/seo/json-ld'
+import { TrackLink } from '@/components/track-link'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig } from '@/lib/content/site'
+
+export const metadata = buildMetadata(
+  'Georgia Car Wreck Guide: What To Do After a Crash',
+  'Step-by-step Georgia car wreck guide: what to do in the first 24 hours, evidence checklist, insurance communication tips, and when to call a lawyer.',
+  '/resources/guides/georgia-car-wreck'
+)
+
+export const faqItems = [
+  {
+    question: 'Should I give a recorded statement right away?',
+    answer: 'General information: keep communications factual and concise, and consider legal guidance before detailed recorded statements.'
+  },
+  {
+    question: 'What evidence matters most after a Georgia collision?',
+    answer: 'Scene photos, witness names, report details, medical records, and claim communications are core records for timeline clarity.'
+  },
+  {
+    question: 'How soon should I seek legal guidance?',
+    answer: 'Timelines can be short and fact-dependent. Early guidance can help preserve records and avoid preventable communication errors.'
+  },
+  {
+    question: 'Is this page legal advice for my specific case?',
+    answer: 'No. This guide provides general information only and does not create an attorney-client relationship.'
+  }
+]
+
+export const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Georgia Car Wreck Guide: What To Do After a Crash',
+      description:
+        'Step-by-step Georgia car wreck guide with first-day actions, evidence priorities, and insurance communication tips.',
+      author: { '@type': 'Organization', name: 'Dominant Law' },
+      publisher: { '@type': 'Organization', name: 'Dominant Law' },
+      mainEntityOfPage: `${siteConfig.domain}/resources/guides/georgia-car-wreck`,
+      about: ['Georgia car wreck', 'auto accident', 'personal injury']
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer
+        }
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteConfig.domain}/` },
+        { '@type': 'ListItem', position: 2, name: 'Resources', item: `${siteConfig.domain}/resources` },
+        { '@type': 'ListItem', position: 3, name: 'Guides', item: `${siteConfig.domain}/resources/guides` },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: 'What to do after a Georgia car wreck',
+          item: `${siteConfig.domain}/resources/guides/georgia-car-wreck`
+        }
+      ]
+    }
+  ]
+}
+
+<JsonLd data={structuredData} />
+
+<div className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:px-0">
+
+<nav aria-label="Breadcrumb" className="mb-6 text-sm text-mutedForeground">
+  <ol className="flex flex-wrap items-center gap-1">
+    <li><Link href="/" className="no-underline hover:text-foreground">Home</Link> /</li>
+    <li><Link href="/resources" className="no-underline hover:text-foreground">Resources</Link> /</li>
+    <li><Link href="/resources/guides" className="no-underline hover:text-foreground">Guides</Link> /</li>
+    <li className="text-foreground">Georgia car wreck</li>
+  </ol>
+</nav>
+
+<section className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card/45 p-6 md:p-8">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_8%_0%,rgba(214,177,84,0.2),transparent_38%)]" />
+  <div className="relative grid gap-6 md:grid-cols-[1fr,220px] md:items-center">
+    <div>
+      <Badge variant="secondary" className="mb-3">Georgia resource guide</Badge>
+      <h1 className="font-serif text-4xl leading-tight md:text-5xl">What to do after a Georgia car wreck</h1>
+      <div className="mt-4 max-w-2xl text-lg text-mutedForeground">Fast, practical steps to protect your health, preserve evidence, and handle insurance communication after a collision.</div>
+    </div>
+    <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border border-primary/45 bg-background/60 shadow-premium">
+      <Image src="/images/a_black_and_white_vector_logo_for_dominant_law.png" alt="Dominant Law lion crest" fill sizes="144px" className="object-contain p-3" />
+    </div>
+  </div>
+</section>
+
+<div className="mt-5">
+  <DisclaimerBar />
+</div>
+
+<section className="mt-8 grid gap-3 md:grid-cols-3">
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">First move</p>
+    <p className="mt-2 text-sm">Get medical care and document symptoms from day one.</p>
+  </div>
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Evidence move</p>
+    <p className="mt-2 text-sm">Capture photos, witnesses, and report details before records change.</p>
+  </div>
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Communication move</p>
+    <p className="mt-2 text-sm">Keep insurer communications factual and organized.</p>
+  </div>
+</section>
+
+<section className="mt-8 rounded-xl border border-border bg-card/30 p-5">
+  <h2 className="font-serif text-2xl">TL;DR checklist (first 24 hours)</h2>
+  <Checklist items={[
+    'Get examined by a medical professional and keep discharge paperwork.',
+    'Photograph all vehicles, visible injuries, roadway marks, and weather conditions.',
+    'Save witness names, contact details, and any report or incident numbers.',
+    'Start one timeline document for treatment, symptoms, missed work, and insurer contacts.',
+    'Do not post case details or fault opinions online.'
+  ]} />
+</section>
+
+<section className="prose prose-invert mt-10 max-w-none">
+
+## What to do at the scene (if safe)
+
+Prioritize safety and emergency response first. If you are physically able, capture key facts while details are fresh and conditions are unchanged.
+
+### High-value records to capture
+
+- Vehicle positions and damage from multiple angles.
+- License plates and visible company identifiers.
+- Road conditions, lighting, and traffic controls.
+- Witness names and contact information.
+
+## Medical treatment and documentation strategy
+
+Early and consistent medical records often become central timeline evidence. Keep notes factual and consistent with your care team.
+
+### Keep one organized file
+
+- Visit summaries and test results.
+- Prescriptions and treatment plans.
+- Out-of-pocket receipts and mileage logs.
+- Work-impact notes (missed days, restrictions).
+
+## Insurance communication playbook
+
+Insurance adjusters may request statements quickly. General best practice is concise, factual communication with documented follow-up.
+
+### Do
+
+- Confirm basic facts.
+- Request claim identifiers in writing.
+- Keep a call log (date, time, topic, next step).
+
+### Do not
+
+- Guess about fault percentages.
+- Minimize or exaggerate injuries.
+- Provide unnecessary speculation.
+
+## Georgia-specific notes
+
+Timelines can be short and law can change. Verify current Georgia statutes, notice requirements, and court rules before relying on generalized summaries.
+
+## When to call a lawyer
+
+Call sooner if injuries are significant, liability is disputed, multiple insurers are involved, or communication pressure rises.
+
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/35 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Need immediate help?</h2>
+  <p className="mt-2 text-sm text-mutedForeground">Talk to a lawyer now for case-specific guidance.</p>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+    <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+    <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+  </div>
+  <div className="mt-4"><DisclaimerBar compact /></div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">Related resources</h2>
+  <div className="mt-3 grid gap-2 text-sm md:grid-cols-2">
+    <Link href="/practice-areas/auto-accidents" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Georgia auto accidents pillar page</Link>
+    <Link href="/resources/guides/insurance-adjusters" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Insurance adjuster dos and don\'ts</Link>
+    <Link href="/resources/guides/medical-documentation" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Medical documentation tips</Link>
+    <Link href="/contact" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Start your free case evaluation</Link>
+  </div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">FAQs</h2>
+  <FAQ items={faqItems} />
+</section>
+
+<Callout tone="warning">Not legal advice. No attorney-client relationship. Do not send confidential information.</Callout>
+
+</div>

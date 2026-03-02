@@ -1,0 +1,154 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/seo'
+import { DisclaimerBar } from '@/components/layout/disclaimer'
+import { JsonLd } from '@/components/seo/json-ld'
+import { TrackLink } from '@/components/track-link'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig } from '@/lib/content/site'
+
+export const metadata = buildMetadata(
+  'Medical Documentation Guide After an Injury',
+  'A practical guide to organizing treatment records and documentation after an injury incident in Georgia.',
+  '/resources/guides/medical-documentation'
+)
+
+export const faqItems = [
+  {
+    question: 'Why are treatment records so important?',
+    answer: 'Clear records support timeline consistency, injury tracking, and communication accuracy.'
+  },
+  {
+    question: 'What should I track between appointments?',
+    answer: 'Track symptoms, limitations, medications, and provider guidance in a dated log.'
+  },
+  {
+    question: 'Should I save minor receipts and costs?',
+    answer: 'Yes. Organized out-of-pocket records can improve factual completeness.'
+  }
+]
+
+export const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Medical Documentation Guide After an Injury',
+      author: { '@type': 'Organization', name: 'Dominant Law' },
+      publisher: { '@type': 'Organization', name: 'Dominant Law' },
+      mainEntityOfPage: `${siteConfig.domain}/resources/guides/medical-documentation`,
+      about: ['medical documentation', 'injury treatment records', 'Georgia personal injury']
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer }
+      }))
+    }
+  ]
+}
+
+<JsonLd data={structuredData} />
+
+<div className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:px-0">
+
+<nav aria-label="Breadcrumb" className="mb-6 text-sm text-mutedForeground">
+  <ol className="flex flex-wrap items-center gap-1">
+    <li><Link href="/" className="no-underline hover:text-foreground">Home</Link> /</li>
+    <li><Link href="/resources" className="no-underline hover:text-foreground">Resources</Link> /</li>
+    <li><Link href="/resources/guides" className="no-underline hover:text-foreground">Guides</Link> /</li>
+    <li className="text-foreground">Medical documentation</li>
+  </ol>
+</nav>
+
+<section className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card/45 p-6 md:p-8">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_8%_0%,rgba(214,177,84,0.2),transparent_38%)]" />
+  <div className="relative grid gap-6 md:grid-cols-[1fr,220px] md:items-center">
+    <div>
+      <Badge variant="secondary" className="mb-3">Georgia resource guide</Badge>
+      <h1 className="font-serif text-4xl leading-tight md:text-5xl">Medical treatment and documentation tips</h1>
+      <div className="mt-4 max-w-2xl text-lg text-mutedForeground">How to keep treatment records organized, consistent, and useful for accurate claim communication.</div>
+    </div>
+    <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border border-primary/45 bg-background/60 shadow-premium">
+      <Image src="/images/a_black_and_white_vector_logo_for_dominant_law.png" alt="Dominant Law lion crest" fill sizes="144px" className="object-contain p-3" />
+    </div>
+  </div>
+</section>
+
+<div className="mt-5"><DisclaimerBar /></div>
+
+<section className="mt-8 rounded-xl border border-border bg-card/30 p-5">
+  <h2 className="font-serif text-2xl">Quick checklist</h2>
+  <Checklist items={[
+    'Follow treatment plans and keep appointment records current.',
+    'Maintain one dated symptom and limitation log.',
+    'Save receipts, copays, and related out-of-pocket costs.',
+    'Preserve provider instructions and summary notes.',
+    'Avoid public posts about medical details.'
+  ]} />
+</section>
+
+<section className="prose prose-invert mt-10 max-w-none">
+
+## Build a reliable documentation system
+
+A consistent system improves clarity and reduces avoidable confusion during claim evaluation.
+
+## Core records to maintain
+
+### Clinical records
+
+- Visit summaries and imaging reports.
+- Diagnoses and treatment plans.
+- Medication and referral details.
+
+### Practical records
+
+- Out-of-pocket expenses.
+- Transportation and visit logs.
+- Work-impact notes.
+
+## Communication consistency
+
+Keep provider and insurer communication factual and aligned with your documented timeline.
+
+### Do
+
+- Keep dates accurate.
+- Use one master timeline.
+- Save all written communications.
+
+### Do not
+
+- Guess about long-term outcomes.
+- Edit records after the fact.
+- Share sensitive details in unsecured channels.
+
+## Georgia note
+
+Claim timelines and legal standards can be short and context-specific. Verify current law before relying on generalized guidance.
+
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/35 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Need legal guidance now?</h2>
+  <p className="mt-2 text-sm text-mutedForeground">Use direct channels for case-specific questions.</p>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+    <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+    <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+  </div>
+  <div className="mt-4"><DisclaimerBar compact /></div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">FAQs</h2>
+  <FAQ items={faqItems} />
+</section>
+
+<Callout tone="warning">Not legal advice. No attorney-client relationship. Do not send confidential information.</Callout>
+
+</div>

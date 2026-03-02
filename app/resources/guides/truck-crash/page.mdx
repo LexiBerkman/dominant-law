@@ -1,0 +1,151 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/seo'
+import { DisclaimerBar } from '@/components/layout/disclaimer'
+import { JsonLd } from '@/components/seo/json-ld'
+import { TrackLink } from '@/components/track-link'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig } from '@/lib/content/site'
+
+export const metadata = buildMetadata(
+  'Georgia Truck Crash Guide: What To Do After a Collision',
+  'A practical Georgia truck crash guide with first actions, evidence preservation priorities, and insurance communication strategy.',
+  '/resources/guides/truck-crash'
+)
+
+export const faqItems = [
+  {
+    question: 'Are truck crash cases different from car wreck cases?',
+    answer: 'Yes. Commercial cases can involve multiple entities, technical records, and layered insurance structures.'
+  },
+  {
+    question: 'What records can disappear quickly?',
+    answer: 'Retention windows vary. Early evidence preservation is often important in commercial collision matters.'
+  },
+  {
+    question: 'Should I speak to the carrier insurer immediately?',
+    answer: 'General information: keep communications factual and concise, and consider legal guidance before detailed statements.'
+  }
+]
+
+export const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Georgia Truck Crash Guide: What To Do After a Collision',
+      author: { '@type': 'Organization', name: 'Dominant Law' },
+      publisher: { '@type': 'Organization', name: 'Dominant Law' },
+      mainEntityOfPage: `${siteConfig.domain}/resources/guides/truck-crash`,
+      about: ['Georgia truck crash', 'commercial vehicle collision', 'personal injury']
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer }
+      }))
+    }
+  ]
+}
+
+<JsonLd data={structuredData} />
+
+<div className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:px-0">
+
+<nav aria-label="Breadcrumb" className="mb-6 text-sm text-mutedForeground">
+  <ol className="flex flex-wrap items-center gap-1">
+    <li><Link href="/" className="no-underline hover:text-foreground">Home</Link> /</li>
+    <li><Link href="/resources" className="no-underline hover:text-foreground">Resources</Link> /</li>
+    <li><Link href="/resources/guides" className="no-underline hover:text-foreground">Guides</Link> /</li>
+    <li className="text-foreground">Truck crash</li>
+  </ol>
+</nav>
+
+<section className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card/45 p-6 md:p-8">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_8%_0%,rgba(214,177,84,0.2),transparent_38%)]" />
+  <div className="relative grid gap-6 md:grid-cols-[1fr,220px] md:items-center">
+    <div>
+      <Badge variant="secondary" className="mb-3">Georgia resource guide</Badge>
+      <h1 className="font-serif text-4xl leading-tight md:text-5xl">What to do after a Georgia truck crash</h1>
+      <div className="mt-4 max-w-2xl text-lg text-mutedForeground">First actions, key commercial evidence priorities, and communication strategy after a collision involving a truck.</div>
+    </div>
+    <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border border-primary/45 bg-background/60 shadow-premium">
+      <Image src="/images/a_black_and_white_vector_logo_for_dominant_law.png" alt="Dominant Law lion crest" fill sizes="144px" className="object-contain p-3" />
+    </div>
+  </div>
+</section>
+
+<div className="mt-5"><DisclaimerBar /></div>
+
+<section className="mt-8 rounded-xl border border-border bg-card/30 p-5">
+  <h2 className="font-serif text-2xl">Quick checklist</h2>
+  <Checklist items={[
+    'Prioritize medical care and immediate safety first.',
+    'Capture identifiers: carrier name, truck number, trailer markings.',
+    'Save witness information, photos, and report references.',
+    'Track insurer and carrier communication in one timeline.',
+    'Avoid speculation about fault, speed, or future recovery.'
+  ]} />
+</section>
+
+<section className="prose prose-invert mt-10 max-w-none">
+
+## Why truck crash claims are different
+
+Commercial collision matters can involve multiple responsible parties and technical record sets, including logs, maintenance, and dispatch-related evidence.
+
+## Evidence preservation priorities
+
+Early preservation can matter because some operational records are not retained indefinitely.
+
+### High-value records
+
+- Scene photos and vehicle damage documentation.
+- Carrier and driver identifiers.
+- Report numbers and witness contacts.
+- Medical timeline records.
+
+## Insurance and communication strategy
+
+Insurer and defense contact may begin quickly. Keep communications factual and documented.
+
+### Do
+
+- Request claim details in writing.
+- Keep a communication log.
+- Preserve all letters and emails.
+
+### Do not
+
+- Offer speculative conclusions.
+- Share unnecessary details publicly.
+- Sign broad releases without review.
+
+## Georgia note
+
+Timelines can be short and legal standards can change. Verify current law before relying on generalized summaries.
+
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/35 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Need case-specific guidance?</h2>
+  <p className="mt-2 text-sm text-mutedForeground">Talk to a lawyer now through direct channels.</p>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+    <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+    <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+  </div>
+  <div className="mt-4"><DisclaimerBar compact /></div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">FAQs</h2>
+  <FAQ items={faqItems} />
+</section>
+
+<Callout tone="warning">Not legal advice. No attorney-client relationship. Do not send confidential information.</Callout>
+
+</div>
