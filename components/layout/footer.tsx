@@ -13,22 +13,22 @@ export function Footer() {
         </div>
         <div className="space-y-2 text-sm">
           <p className="font-semibold">Quick Links</p>
-          <Link href="/practice-areas" className="block text-mutedForeground no-underline hover:text-foreground">Practice Areas</Link>
-          <Link href="/resources/guides" className="block text-mutedForeground no-underline hover:text-foreground">Guides</Link>
-          <Link href="/contact" className="block text-mutedForeground no-underline hover:text-foreground">Contact</Link>
-          <Link href="/disclaimer" className="block text-mutedForeground no-underline hover:text-foreground">Disclaimer</Link>
-          <Link href="/privacy" className="block text-mutedForeground no-underline hover:text-foreground">Privacy</Link>
-          <Link href="/terms" className="block text-mutedForeground no-underline hover:text-foreground">Terms</Link>
+          <Link href="/practice-areas" className="block text-foreground/90 no-underline hover:text-primary">Practice Areas</Link>
+          <Link href="/resources/guides" className="block text-foreground/90 no-underline hover:text-primary">Guides</Link>
+          <Link href="/contact" className="block text-foreground/90 no-underline hover:text-primary">Contact</Link>
+          <Link href="/disclaimer" className="block text-foreground/90 no-underline hover:text-primary">Disclaimer</Link>
+          <Link href="/privacy" className="block text-foreground/90 no-underline hover:text-primary">Privacy</Link>
+          <Link href="/terms" className="block text-foreground/90 no-underline hover:text-primary">Terms</Link>
         </div>
         <div className="space-y-2 text-sm">
           <p className="font-semibold">Contact</p>
-          <TrackLink href={siteConfig.phoneHref} event="call_click" className="block text-mutedForeground no-underline hover:text-foreground">
+          <TrackLink href={siteConfig.phoneHref} event="call_click" className="block text-foreground/90 no-underline hover:text-primary">
             Call now: {siteConfig.phoneDisplay}
           </TrackLink>
-          <TrackLink href={siteConfig.textHref} event="text_click" className="block text-mutedForeground no-underline hover:text-foreground">
+          <TrackLink href={siteConfig.textHref} event="text_click" className="block text-foreground/90 no-underline hover:text-primary">
             Text us
           </TrackLink>
-          <TrackLink href="/contact" event="form_start" className="block text-mutedForeground no-underline hover:text-foreground">
+          <TrackLink href="/contact" event="form_start" className="block text-foreground/90 no-underline hover:text-primary">
             Free case evaluation
           </TrackLink>
         </div>

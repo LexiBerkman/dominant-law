@@ -155,7 +155,11 @@ export function IntakeForm() {
         <div className="space-y-4">
           <div>
             <Label htmlFor="incidentType">Incident type *</Label>
-            <select id="incidentType" className="h-10 w-full rounded-md border border-input bg-input px-3 text-sm" {...form.register('incidentType')}>
+            <select
+              id="incidentType"
+              className="h-11 w-full rounded-xl border border-input bg-input px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              {...form.register('incidentType')}
+            >
               <option value="auto-accidents">Auto accidents</option>
               <option value="truck-accidents">Truck accidents</option>
               <option value="slip-and-fall">Slip and fall</option>

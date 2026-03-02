@@ -134,7 +134,7 @@ export function ChatConcierge() {
             <select
               id="answer-topic"
               value={query}
-              className="h-10 w-full rounded-md border border-input bg-input px-3 text-sm"
+              className="h-11 w-full rounded-xl border border-input bg-input px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               onChange={(e) => setQuery(e.target.value)}
             >
               <option value="auto-accidents">Auto accidents</option>
@@ -188,7 +188,7 @@ export function ChatConcierge() {
               <div className="space-y-3">
                 <Label>Incident type *</Label>
                 <select
-                  className="h-10 w-full rounded-md border border-input bg-input px-3 text-sm"
+                  className="h-11 w-full rounded-xl border border-input bg-input px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   value={state.incidentType}
                   onChange={(e) => setState((s) => ({ ...s, incidentType: e.target.value as IntakeState['incidentType'] }))}
                 >

@@ -51,7 +51,7 @@ export function Header() {
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
           {siteConfig.nav.map((item) => (
-            <Link key={item.href} href={item.href} className="text-sm text-mutedForeground no-underline hover:text-foreground">
+            <Link key={item.href} href={item.href} className="text-sm text-foreground/90 no-underline hover:text-primary">
               {item.label}
             </Link>
           ))}
