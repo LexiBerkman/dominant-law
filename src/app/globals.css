@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #faf9f6;
   color: #222222;
 }
@@ -13,13 +13,15 @@ body {
   padding: 20px;
 }
 
-header, footer {
+header,
+footer {
   background-color: #222222;
   color: #f8f8f8;
   padding: 1rem;
 }
 
-header a, footer a {
+header a,
+footer a {
   color: #d4af37; /* Metallic Gold Accent */
   text-decoration: none;
 }
@@ -36,7 +38,8 @@ nav ul li {
   font-weight: bold;
 }
 
-button, input[type="submit"] {
+button,
+input[type="submit"] {
   background-color: #d4af37; /* Metallic Gold */
   border: none;
   padding: 1rem 2rem;
@@ -48,7 +51,8 @@ button, input[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-button:hover, input[type="submit"]:hover {
+button:hover,
+input[type="submit"]:hover {
   background-color: #b08e2f;
 }
 
@@ -57,7 +61,8 @@ form label {
   margin-bottom: 0.5rem;
 }
 
-form input, form textarea {
+form input,
+form textarea {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;

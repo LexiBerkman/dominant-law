@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 export const metadata = {
-  title: 'Attorneys - Dominant Law',
-  description: 'Meet the skilled legal team at Dominant Law.',
+  title: "Attorneys - Dominant Law",
+  description: "Meet the skilled legal team at Dominant Law.",
   openGraph: {
-    title: 'Attorneys',
-    description: 'Trusted Georgia attorneys with proven results.',
-    url: 'https://dominant.law/attorneys',
+    title: "Attorneys",
+    description: "Trusted Georgia attorneys with proven results.",
+    url: "https://dominant.law/attorneys",
   },
 };
 
@@ -17,7 +17,10 @@ export default function Attorneys() {
       <div>
         <section>
           <h2>Jane Smith, Partner</h2>
-          <p>Expert in personal injury and class actions with 15+ years of courtroom experience.</p>
+          <p>
+            Expert in personal injury and class actions with 15+ years of
+            courtroom experience.
+          </p>
         </section>
         <section>
           <h2>John Doe, Senior Associate</h2>
