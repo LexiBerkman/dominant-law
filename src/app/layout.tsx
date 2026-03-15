@@ -1,41 +1,78 @@
-import './globals.css';
-import React from 'react';
-import Link from 'next/link';
+import "./globals.css";
+import React from "react";
+import Link from "next/link";
 
 export const metadata = {
-  title: 'Dominant Law',
-  description: 'Elite Georgia law firm providing strategic legal solutions',
-  robots: 'index, follow',
+  title: "Dominant Law",
+  description: "Elite Georgia trial counsel for catastrophic injury, wrongful death, and business disputes.",
+  robots: "index, follow",
   icons: {
-    icon: '/favicon.ico'
-  }
+    icon: "/favicon.ico",
+  },
 };
+
+const navItems = [
+  { href: "/practice-areas", label: "Practice Areas" },
+  { href: "/attorneys", label: "Attorneys" },
+  { href: "/results", label: "Results" },
+  { href: "/about", label: "About" },
+  { href: "/resources", label: "Resources" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <header>
-          <div className="header-container">
-            <Link href="/">Dominant Law</Link>
-            <nav>
-              <ul>
-                <li><Link href="/practice-areas">Practice Areas</Link></li>
-                <li><Link href="/attorneys">Attorneys</Link></li>
-                <li><Link href="/results">Case Results</Link></li>
-                <li><Link href="/about">About</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
-                <li><Link href="/resources">Resources</Link></li>
-                <li><Link href="/faq">FAQ</Link></li>
-                <li><Link href="/georgia/atlanta">Georgia Locations</Link></li>
-              </ul>
-            </nav>
-          </div>
-        </header>
-        <main>{children}</main>
-        <footer>
-          <p>© 2026 Dominant Law. All rights reserved.</p>
-        </footer>
+        <div className="site-shell">
+          <header className="site-header">
+            <div className="topbar">
+              <span>Georgia trial counsel for plaintiffs, founders, and families</span>
+              <Link href="/contact">Request a confidential case review</Link>
+            </div>
+            <div className="nav-wrap">
+              <Link className="wordmark" href="/">
+                <span className="wordmark-mark">DL</span>
+                <span className="wordmark-copy">
+                  <strong>Dominant Law</strong>
+                  <span>Litigation shaped for decisive outcomes</span>
+                </span>
+              </Link>
+              <nav aria-label="Primary">
+                <ul className="nav-list">
+                  {navItems.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </header>
+          <main>{children}</main>
+          <footer className="site-footer">
+            <div className="footer-grid">
+              <div>
+                <p className="footer-kicker">Dominant Law</p>
+                <p>
+                  Strategic Georgia counsel for high-stakes litigation, serious injury, wrongful death, and bet-the-company disputes.
+                </p>
+              </div>
+              <div>
+                <p className="footer-kicker">Core Offices</p>
+                <p>Atlanta, Augusta, and Savannah</p>
+              </div>
+              <div>
+                <p className="footer-kicker">Start Here</p>
+                <p>
+                  <Link href="/contact">Schedule a consultation</Link>
+                </p>
+              </div>
+            </div>
+            <p className="footer-meta">© 2026 Dominant Law. All rights reserved.</p>
+          </footer>
+        </div>
       </body>
     </html>
   );

@@ -1,41 +1,113 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 export const metadata = {
-  title: 'Dominant Law - Atlanta’s Premier Legal Advocates',
-  description: 'Formidable courtroom expertise and strategic legal counsel for Georgia plaintiffs and businesses.',
+  title: "Dominant Law - Georgia Trial Counsel for High-Stakes Cases",
+  description:
+    "Dominant Law represents plaintiffs, founders, and businesses across Georgia in catastrophic injury, wrongful death, and complex litigation matters.",
   openGraph: {
-    title: 'Dominant Law',
-    description: 'Georgia’s trusted legal representation for high-value cases.',
-    url: 'https://dominant.law',
+    title: "Dominant Law",
+    description: "Georgia trial counsel for high-stakes plaintiff and business litigation.",
+    url: "https://dominant.law",
   },
 };
 
+const results = [
+  { value: "$42M", label: "Wrongful death resolution" },
+  { value: "$18.5M", label: "Commercial fraud recovery" },
+  { value: "24/7", label: "Rapid-response intake for urgent matters" },
+];
+
+const practiceAreas = [
+  "Catastrophic personal injury",
+  "Wrongful death litigation",
+  "Business and partnership disputes",
+  "Medical negligence claims",
+];
+
+const advantages = [
+  "Direct senior-attorney access from intake through resolution",
+  "Trial-first strategy that strengthens negotiation leverage",
+  "Georgia market fluency across metro and regional venues",
+];
+
 export default function Home() {
   return (
-    <main className="container">
-      <header>
-        <h1>Dominant Law</h1>
-        <p>Atlanta’s Premier Legal Advocates</p>
-      </header>
-      <section>
-        <p>
-          Trusted legal counsel serving plaintiffs and businesses across Georgia with
-          formidable courtroom expertise and strategic guidance.
-        </p>
-        <nav>
-          <ul>
-            <li><Link href="/practice-areas">Practice Areas</Link></li>
-            <li><Link href="/attorneys">Attorneys</Link></li>
-            <li><Link href="/results">Case Results</Link></li>
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/resources">Resources</Link></li>
-            <li><Link href="/faq">FAQ</Link></li>
-            <li><Link href="/georgia/atlanta">Georgia Locations</Link></li>
+    <div className="home-page">
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="eyebrow">Dominant Law | Georgia Litigation Counsel</p>
+          <h1>When the case is too important for a volume firm, bring in a team built for pressure.</h1>
+          <p className="hero-lead">
+            We represent plaintiffs, families, and businesses in matters where the stakes are financial, reputational, and deeply personal.
+          </p>
+          <div className="hero-actions">
+            <Link className="button button-primary" href="/contact">
+              Request a case review
+            </Link>
+            <Link className="button button-secondary" href="/results">
+              Review outcomes
+            </Link>
+          </div>
+        </div>
+        <aside className="hero-panel">
+          <p className="panel-kicker">Why clients move their case to us</p>
+          <ul className="advantage-list">
+            {advantages.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
-        </nav>
+        </aside>
       </section>
-    </main>
+
+      <section className="stats-band" aria-label="Firm highlights">
+        {results.map((item) => (
+          <div className="stat-card" key={item.label}>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </section>
+
+      <section className="split-section">
+        <div>
+          <p className="eyebrow">High-stakes representation</p>
+          <h2>Built for complex disputes, catastrophic harm, and cases that demand precision.</h2>
+          <p>
+            Dominant Law is structured to move quickly, investigate deeply, and present a disciplined case narrative from day one.
+          </p>
+        </div>
+        <div className="practice-grid">
+          {practiceAreas.map((area) => (
+            <article className="practice-card" key={area}>
+              <h3>{area}</h3>
+              <p>Strategic counsel shaped around leverage, documentation, and courtroom readiness.</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="feature-banner">
+        <div>
+          <p className="eyebrow">Georgia footprint</p>
+          <h2>From Atlanta to Savannah, we bring local venue awareness to statewide litigation.</h2>
+        </div>
+        <div className="feature-links">
+          <Link href="/georgia/atlanta">Atlanta</Link>
+          <Link href="/georgia/augusta">Augusta</Link>
+          <Link href="/georgia/savannah">Savannah</Link>
+        </div>
+      </section>
+
+      <section className="cta-block">
+        <div>
+          <p className="eyebrow">Start with clarity</p>
+          <h2>Tell us what happened. We’ll tell you what matters next.</h2>
+        </div>
+        <Link className="button button-primary" href="/contact">
+          Schedule consultation
+        </Link>
+      </section>
+    </div>
   );
 }
