@@ -1,6 +1,12 @@
 import "./globals.css";
 import React from "react";
 import Link from "next/link";
+import { Inter_Tight } from "next/font/google";
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
 
 export const metadata = {
   title: "Dominant Law",
@@ -24,7 +30,7 @@ const navItems = [
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className={interTight.variable}>
         <div className="site-shell">
           <header className="site-header">
             <div className="topbar">
