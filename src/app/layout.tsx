@@ -29,14 +29,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="site-header">
             <div className="topbar">
               <span>Georgia trial counsel for plaintiffs, founders, and families</span>
-              <Link href="/contact">Request a confidential case review</Link>
+              <div className="topbar-links">
+                <span>Confidential consultations statewide</span>
+                <Link href="/contact">Request a case review</Link>
+              </div>
             </div>
             <div className="nav-wrap">
               <Link className="wordmark" href="/">
                 <span className="wordmark-mark">DL</span>
                 <span className="wordmark-copy">
                   <strong>Dominant Law</strong>
-                  <span>Litigation shaped for decisive outcomes</span>
+                  <span>High-stakes counsel, built for decisive pressure</span>
                 </span>
               </Link>
               <nav aria-label="Primary">
@@ -48,6 +51,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   ))}
                 </ul>
               </nav>
+              <Link className="nav-cta" href="/contact">
+                Start confidential review
+              </Link>
             </div>
           </header>
           <main>{children}</main>
