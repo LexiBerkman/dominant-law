@@ -1,15 +1,13 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 export const metadata = {
-  title: "Practice Areas - Dominant Law",
-  description:
-    "Explore our comprehensive legal services tailored for Georgia clients.",
+  title: 'Practice Areas - Dominant Law',
+  description: 'Explore our comprehensive legal services tailored for Georgia clients.',
   openGraph: {
-    title: "Practice Areas",
-    description:
-      "Expert legal services for a wide range of Georgia legal matters.",
-    url: "https://dominant.law/practice-areas",
+    title: 'Practice Areas',
+    description: 'Expert legal services for a wide range of Georgia legal matters.',
+    url: 'https://dominant.law/practice-areas',
   },
 };
 

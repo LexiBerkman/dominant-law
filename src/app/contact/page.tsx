@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 export const metadata = {
-  title: "Contact Dominant Law",
-  description: "Get in touch with Dominant Law for a consultation.",
+  title: 'Contact Dominant Law',
+  description: 'Get in touch with Dominant Law for a consultation.',
   openGraph: {
-    title: "Contact",
-    description: "Reach out for trusted legal assistance in Georgia.",
-    url: "https://dominant.law/contact",
+    title: 'Contact',
+    description: 'Reach out for trusted legal assistance in Georgia.',
+    url: 'https://dominant.law/contact',
   },
 };
 
