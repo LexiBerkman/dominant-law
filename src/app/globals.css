@@ -240,6 +240,27 @@ img {
   gap: 1rem;
 }
 
+.hero-image-frame,
+.feature-art {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.hero-image-frame {
+  background: linear-gradient(135deg, #1a212a, #11161c);
+  min-height: 17rem;
+  animation: fade-rise 0.8s ease 0.08s both;
+}
+
+.hero-image-frame img,
+.feature-art img,
+.editorial-quote img {
+  width: 100%;
+  height: auto;
+}
+
 .eyebrow,
 .panel-kicker,
 .footer-kicker {
@@ -510,13 +531,9 @@ img {
   animation: fade-rise 0.8s ease 0.18s both;
 }
 
-.editorial-quote p {
-  font-size: clamp(1.6rem, 2.4vw, 2.25rem);
-  line-height: 1.05;
-  color: #243243;
-  margin: 0;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+.editorial-quote img {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(21, 25, 31, 0.08);
 }
 
 .editorial-quote span {
@@ -608,14 +625,21 @@ img {
   background:
     linear-gradient(120deg, rgba(255, 229, 208, 0.96), rgba(219, 228, 235, 0.9)),
     var(--surface-2);
+  align-items: stretch;
 }
 
 .feature-links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.feature-art {
+  flex: 0 1 22rem;
+  min-width: 16rem;
 }
 
 .cta-block {

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Dominant Law - Georgia Trial Counsel for High-Stakes Cases",
@@ -71,6 +72,15 @@ export default function Home() {
           </div>
         </div>
         <aside className="hero-stack">
+          <div className="hero-image-frame">
+            <Image
+              src="/hero-briefing.svg"
+              alt="Editorial illustration of a legal briefing board and case strategy workspace"
+              width={1200}
+              height={960}
+              priority
+            />
+          </div>
           <div className="hero-panel hero-panel-primary">
             <p className="panel-kicker">Why clients move their case to us</p>
             <ul className="advantage-list">
@@ -128,9 +138,12 @@ export default function Home() {
           </p>
         </article>
         <article className="editorial-quote">
-          <p>
-            “The difference between a firm that files paper and a firm that changes leverage is visible in the first thirty days.”
-          </p>
+          <Image
+            src="/pressure-map.svg"
+            alt="Abstract litigation pressure map illustration"
+            width={960}
+            height={760}
+          />
           <span>Dominant Law litigation philosophy</span>
         </article>
       </section>
@@ -173,6 +186,14 @@ export default function Home() {
         <div>
           <p className="eyebrow">Georgia footprint</p>
           <h2>From Atlanta to Savannah, we bring local venue awareness to statewide litigation.</h2>
+        </div>
+        <div className="feature-art">
+          <Image
+            src="/georgia-frame.svg"
+            alt="Abstract Georgia map graphic highlighting key office markets"
+            width={960}
+            height={760}
+          />
         </div>
         <div className="feature-links">
           <Link href="/georgia/atlanta">Atlanta</Link>
