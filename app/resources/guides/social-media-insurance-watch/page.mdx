@@ -1,0 +1,201 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/seo'
+import { DisclaimerBar } from '@/components/layout/disclaimer'
+import { JsonLd } from '@/components/seo/json-ld'
+import { TrackLink } from '@/components/track-link'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig } from '@/lib/content/site'
+
+export const metadata = buildMetadata(
+  'Social Media and Injury Claims: What Plaintiffs Need To Know',
+  'Insurance companies can monitor social media activity. Practical safeguards plaintiffs should take after an injury incident.',
+  '/resources/guides/social-media-insurance-watch'
+)
+
+export const faqItems = [
+  {
+    question: 'Do insurance companies really monitor social media after an injury claim?',
+    answer: 'Yes, in many claims insurers and defense teams review public posts, photos, tags, and comments for statements they can use to challenge credibility.'
+  },
+  {
+    question: 'Should I delete old posts?',
+    answer: 'Do not delete potential evidence without legal guidance. Deletion can create separate legal problems. Ask your lawyer how to handle existing content.'
+  },
+  {
+    question: 'Is making my account private enough?',
+    answer: 'Privacy settings help, but they are not a complete shield. Assume anything posted could become discoverable in litigation.'
+  },
+  {
+    question: 'What is the safest approach during an active case?',
+    answer: 'Keep posting to a minimum, avoid discussing the incident, and coordinate communication strategy with counsel.'
+  }
+]
+
+export const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Social Media and Injury Claims: What Plaintiffs Need To Know',
+      author: { '@type': 'Organization', name: 'Dominant Law' },
+      publisher: { '@type': 'Organization', name: 'Dominant Law' },
+      mainEntityOfPage: `${siteConfig.domain}/resources/guides/social-media-insurance-watch`,
+      about: ['social media', 'insurance claims', 'plaintiff personal injury', 'Georgia']
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer }
+      }))
+    }
+  ]
+}
+
+<JsonLd data={structuredData} />
+
+<div className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:px-0">
+
+<nav aria-label="Breadcrumb" className="mb-6 text-sm text-mutedForeground">
+  <ol className="flex flex-wrap items-center gap-1">
+    <li><Link href="/" className="no-underline hover:text-foreground">Home</Link> /</li>
+    <li><Link href="/resources" className="no-underline hover:text-foreground">Resources</Link> /</li>
+    <li><Link href="/resources/guides" className="no-underline hover:text-foreground">Guides</Link> /</li>
+    <li className="text-foreground">Social media and insurance surveillance</li>
+  </ol>
+</nav>
+
+<section className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card/45 p-6 md:p-8">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_8%_5%,rgba(214,177,84,0.18),transparent_33%),radial-gradient(circle_at_82%_4%,rgba(214,177,84,0.12),transparent_30%)]" />
+  <div className="relative grid gap-6 md:grid-cols-[1fr,320px] md:items-center">
+    <div>
+      <Badge variant="secondary" className="mb-3">Client safeguard guide</Badge>
+      <h1 className="font-serif text-4xl leading-tight md:text-5xl">Insurance is watching: social media rules for plaintiffs</h1>
+      <div className="mt-4 max-w-2xl text-lg text-mutedForeground">
+        One post can be reframed against your case. Use these safeguards to reduce avoidable risk while your claim is active.
+      </div>
+    </div>
+    <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-2xl border border-primary/45 bg-background/50 shadow-premium md:h-72 md:w-72">
+      <Image src="/images/insurance-goon.png" alt="Dark surveillance-style figure symbolizing insurance monitoring social media activity" fill sizes="(max-width: 768px) 224px, 288px" className="scale-110 object-cover contrast-125 saturate-75" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 via-background/10 to-transparent" />
+      <div className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-primary/40 bg-background/75 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-primary">
+        Surveillance risk
+      </div>
+    </div>
+  </div>
+</section>
+
+<div className="mt-5"><DisclaimerBar /></div>
+
+<section className="mt-8 rounded-xl border border-border bg-card/30 p-5">
+  <h2 className="font-serif text-2xl">Immediate safeguards checklist</h2>
+  <Checklist items={[
+    'Pause posting about your injury, treatment, activity level, and travel.',
+    'Do not discuss fault, timelines, or settlement expectations online.',
+    'Review privacy settings, but do not assume private means protected.',
+    'Ask friends/family not to tag you in activity photos or event check-ins.',
+    'Coordinate any public-facing communication with your legal team first.'
+  ]} />
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/30 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Lock down your social accounts now</h2>
+  <div className="mt-2 text-sm text-mutedForeground">
+    Use the official platform guides to tighten privacy settings before posting anything new.
+  </div>
+  <div className="mt-4 grid gap-3 md:grid-cols-3">
+    <a
+      href="https://www.facebook.com/help/193677450678703/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-xl border border-border bg-background/80 p-4 no-underline transition hover:border-primary/60 hover:bg-background"
+    >
+      <span className="block text-xs uppercase tracking-[0.16em] text-primary">Facebook</span>
+      <span className="mt-1 block font-medium">Privacy settings guide</span>
+    </a>
+    <a
+      href="https://www.facebook.com/help/448523408565555/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-xl border border-border bg-background/80 p-4 no-underline transition hover:border-primary/60 hover:bg-background"
+    >
+      <span className="block text-xs uppercase tracking-[0.16em] text-primary">Instagram</span>
+      <span className="mt-1 block font-medium">Make account private</span>
+    </a>
+    <a
+      href="https://support.tiktok.com/en/account-and-privacy/account-privacy-settings/making-your-account-public-or-private"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-xl border border-border bg-background/80 p-4 no-underline transition hover:border-primary/60 hover:bg-background"
+    >
+      <span className="block text-xs uppercase tracking-[0.16em] text-primary">TikTok</span>
+      <span className="mt-1 block font-medium">Private account settings</span>
+    </a>
+  </div>
+</section>
+
+<section className="prose prose-invert mt-10 max-w-none">
+
+## Why social media creates claim risk
+
+Insurers and defense counsel look for inconsistencies between posts and claim allegations. Even harmless context can be reframed to challenge credibility.
+
+## High-risk content categories
+
+### Activity and lifestyle posts
+
+Photos or videos of physical activity can be used to suggest your injuries are less serious than documented.
+
+### Casual statements about the incident
+
+Offhand comments can be interpreted as admissions or contradictions.
+
+### Tagged content and comments
+
+Risk is not limited to what you post directly. Tagged media and comment threads can also become relevant.
+
+## What plaintiffs should do instead
+
+### Communication guardrails
+
+- Keep case details offline.
+- Use direct private channels with your legal team.
+- If asked about the case, decline public discussion.
+
+### Documentation best practices
+
+- Keep treatment and symptom updates in your private case file, not social media.
+- Save claim communications and legal correspondence in one organized location.
+
+## Critical warning: do not destroy evidence
+
+Do not mass-delete posts or alter potential evidence without legal guidance. Preservation obligations may apply, and improper deletion can cause separate legal issues.
+
+## Bottom line
+
+Treat every post as potentially reviewable by insurance and defense counsel. A disciplined social media strategy can protect your claim integrity.
+
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/35 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Need case-specific guidance now?</h2>
+  <p className="mt-2 text-sm text-mutedForeground">Talk to a lawyer before posting about your case.</p>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+    <Button asChild variant="secondary"><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+    <Button asChild variant="ghost"><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+  </div>
+  <div className="mt-4"><DisclaimerBar compact /></div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">FAQs</h2>
+  <FAQ items={faqItems} />
+</section>
+
+<Callout tone="warning">Not legal advice. No attorney-client relationship. Do not send confidential information.</Callout>
+
+</div>

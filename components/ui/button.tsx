@@ -5,13 +5,13 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-transparent text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-xl border border-transparent text-sm font-semibold tracking-[0.02em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primaryForeground shadow-sm hover:bg-primary/90 active:bg-primary/80',
-        secondary: 'border-primary/35 bg-secondary text-secondaryForeground hover:bg-secondary/85 active:bg-secondary/75',
-        ghost: 'text-foreground hover:bg-muted active:bg-muted/80'
+        default: 'bg-primary text-primaryForeground shadow-sm hover:-translate-y-0.5 hover:bg-primary/90 active:translate-y-0 active:bg-primary/80',
+        secondary: 'border-primary/35 bg-secondary text-secondaryForeground hover:-translate-y-0.5 hover:bg-secondary/85 active:translate-y-0 active:bg-secondary/75',
+        ghost: 'text-foreground hover:-translate-y-0.5 hover:bg-muted active:translate-y-0 active:bg-muted/80'
       },
       size: {
         default: 'h-11 px-5 py-2',

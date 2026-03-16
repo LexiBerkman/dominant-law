@@ -28,5 +28,10 @@ export const guides = [
     slug: 'medical-documentation',
     title: 'Medical treatment and documentation tips',
     description: 'General guidance to organize treatment records and strengthen factual clarity.'
+  },
+  {
+    slug: 'social-media-insurance-watch',
+    title: 'Social media and injury claims: what plaintiffs should do',
+    description: 'Insurance is always watching. Safeguards plaintiffs can take to avoid preventable claim damage online.'
   }
 ];
