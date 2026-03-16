@@ -33,5 +33,10 @@ export const guides = [
     slug: 'social-media-insurance-watch',
     title: 'Social media and injury claims: what plaintiffs should do',
     description: 'Insurance is always watching. Safeguards plaintiffs can take to avoid preventable claim damage online.'
+  },
+  {
+    slug: 'georgia-litigation-process',
+    title: 'Georgia litigation process: what clients should expect',
+    description: 'A start-to-finish guide to the Georgia injury litigation process, from intake through settlement, trial, and payout.'
   }
 ];

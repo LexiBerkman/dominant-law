@@ -1,0 +1,262 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/seo'
+import { DisclaimerBar } from '@/components/layout/disclaimer'
+import { JsonLd } from '@/components/seo/json-ld'
+import { TrackLink } from '@/components/track-link'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig } from '@/lib/content/site'
+
+export const metadata = buildMetadata(
+  'Georgia Litigation Process Guide: What Clients Should Expect',
+  'A practical Georgia injury litigation guide covering the process from intake and investigation through filing suit, discovery, mediation, trial, and payout.',
+  '/resources/guides/georgia-litigation-process'
+)
+
+export const faqItems = [
+  {
+    question: 'How long does a Georgia injury lawsuit usually take?',
+    answer: 'There is no universal timeline. Case length depends on treatment, liability disputes, court scheduling, discovery scope, settlement posture, and whether the matter goes to trial.'
+  },
+  {
+    question: 'Does every case file suit right away?',
+    answer: 'No. Many claims go through investigation and pre-suit negotiation first. Suit is usually filed when liability, damages, deadlines, or negotiation posture make litigation necessary.'
+  },
+  {
+    question: 'Will my case definitely go to trial?',
+    answer: 'No. Many cases resolve before trial, but serious cases are often prepared as if trial is possible because that affects leverage and readiness.'
+  },
+  {
+    question: 'When does a client usually have to give testimony?',
+    answer: 'Clients may give testimony in depositions during discovery and, if the case reaches trial, in court. Preparation is typically part of the litigation process.'
+  }
+]
+
+export const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: 'Georgia Litigation Process Guide: What Clients Should Expect',
+      description:
+        'A start-to-finish overview of the Georgia injury litigation process, from intake through discovery, mediation, trial preparation, and resolution.',
+      author: { '@type': 'Organization', name: 'Dominant Law' },
+      publisher: { '@type': 'Organization', name: 'Dominant Law' },
+      mainEntityOfPage: `${siteConfig.domain}/resources/guides/georgia-litigation-process`,
+      about: ['Georgia litigation process', 'personal injury lawsuit', 'discovery', 'mediation', 'trial']
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer
+        }
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteConfig.domain}/` },
+        { '@type': 'ListItem', position: 2, name: 'Resources', item: `${siteConfig.domain}/resources` },
+        { '@type': 'ListItem', position: 3, name: 'Guides', item: `${siteConfig.domain}/resources/guides` },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: 'Georgia litigation process',
+          item: `${siteConfig.domain}/resources/guides/georgia-litigation-process`
+        }
+      ]
+    }
+  ]
+}
+
+<JsonLd data={structuredData} />
+
+<div className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:px-0">
+
+<nav aria-label="Breadcrumb" className="mb-6 text-sm text-mutedForeground">
+  <ol className="flex flex-wrap items-center gap-1">
+    <li><Link href="/" className="no-underline hover:text-foreground">Home</Link> /</li>
+    <li><Link href="/resources" className="no-underline hover:text-foreground">Resources</Link> /</li>
+    <li><Link href="/resources/guides" className="no-underline hover:text-foreground">Guides</Link> /</li>
+    <li className="text-foreground">Georgia litigation process</li>
+  </ol>
+</nav>
+
+<section className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card/45 p-6 md:p-8">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_8%_0%,rgba(214,177,84,0.2),transparent_38%)]" />
+  <div className="relative grid gap-6 md:grid-cols-[1fr,220px] md:items-center">
+    <div>
+      <Badge variant="secondary" className="mb-3">Georgia resource guide</Badge>
+      <h1 className="font-serif text-4xl leading-tight md:text-5xl">Georgia litigation process: what clients should expect</h1>
+      <div className="mt-4 max-w-2xl text-lg text-mutedForeground">A start-to-finish roadmap of how a Georgia injury case can move from intake through investigation, lawsuit filing, discovery, mediation, trial, and final resolution.</div>
+    </div>
+    <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border border-primary/45 bg-background/60 shadow-premium">
+      <Image src="/images/a_black_and_white_vector_logo_for_dominant_law.png" alt="Dominant Law lion crest" fill sizes="144px" className="object-contain p-3" />
+    </div>
+  </div>
+</section>
+
+<div className="mt-5">
+  <DisclaimerBar />
+</div>
+
+<section className="mt-8 grid gap-3 md:grid-cols-3">
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Early phase</p>
+    <p className="mt-2 text-sm">Intake, treatment tracking, evidence preservation, and liability review.</p>
+  </div>
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Litigation phase</p>
+    <p className="mt-2 text-sm">Suit, written discovery, depositions, motion practice, and mediation.</p>
+  </div>
+  <div className="rounded-lg border border-border bg-muted/40 p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-primary">Resolution phase</p>
+    <p className="mt-2 text-sm">Settlement, trial, post-trial steps, liens, costs, and payout timing.</p>
+  </div>
+</section>
+
+<section className="mt-8 rounded-xl border border-border bg-card/30 p-5">
+  <h2 className="font-serif text-2xl">Quick timeline overview</h2>
+  <Checklist items={[
+    'Case intake, conflict checks, and immediate evidence preservation.',
+    'Medical treatment and factual investigation.',
+    'Pre-suit demand or strategic negotiation when appropriate.',
+    'Filing suit before deadlines expire.',
+    'Written discovery, depositions, records collection, and expert work.',
+    'Mediation or settlement negotiations.',
+    'Trial preparation, trial, and post-resolution disbursement.'
+  ]} />
+</section>
+
+<section className="prose prose-invert mt-10 max-w-none">
+
+## Phase 1: intake, strategy, and preservation
+
+The process usually begins with intake, a high-level fact review, and immediate risk spotting. At this stage, the priority is not theatrics. It is control. That means preserving evidence, identifying insurance, building a reliable timeline, and making sure the client is not making preventable mistakes in treatment or communication.
+
+If the injury came from a crash, our [Georgia car wreck guide](/resources/guides/georgia-car-wreck) explains the first-day evidence steps in more detail. If the claim involves insurer communication pressure, our [insurance adjuster guide](/resources/guides/insurance-adjusters) is the companion page.
+
+## Phase 2: treatment and factual development
+
+Most injury cases need a stable treatment record before anyone can evaluate damages with confidence. During this phase, records are collected, symptoms are tracked, and the legal team works to understand liability, damages, and defenses.
+
+### What usually happens here
+
+- Medical records and billing are gathered.
+- Witnesses, reports, and photos are organized.
+- Insurance coverage and policy issues are reviewed.
+- The case theory starts to sharpen.
+
+This is where disciplined [medical documentation](/resources/guides/medical-documentation) matters. Weak record organization creates avoidable friction later in litigation.
+
+## Phase 3: pre-suit demand and negotiation
+
+Not every case should file suit immediately. In some matters, the right move is to finish core investigation, package the claim well, and present a pre-suit demand. The goal is not to send paper for its own sake. The goal is to show facts, damages, and litigation readiness clearly enough that settlement pressure becomes real.
+
+### Why some cases still move into litigation
+
+- Liability is disputed.
+- Damages are undervalued.
+- The insurer delays or lowballs the claim.
+- Deadlines are approaching.
+- Multiple parties or complicated facts require formal discovery.
+
+## Phase 4: filing the lawsuit
+
+When pre-suit efforts are not enough, the next step is filing a complaint in the appropriate Georgia court before the statute of limitations or other deadlines expire. After filing, the defendant must be served and will usually file an answer.
+
+Filing suit does not mean trial is guaranteed. It means the case has moved into a formal process with court rules, deadlines, and discovery obligations.
+
+## Phase 5: written discovery
+
+Once the case is in litigation, the parties usually exchange written discovery. This can include interrogatories, requests for production, and requests for admission. The point is to force information exchange, pin down positions, and identify where disputes actually are.
+
+### Common discovery topics
+
+- Medical treatment history.
+- Prior injuries and claimed limitations.
+- Liability facts and scene details.
+- Insurance positions and defenses.
+- Economic loss documentation.
+
+## Phase 6: depositions
+
+Depositions are sworn question-and-answer sessions taken outside the courtroom. Clients, defendants, witnesses, treating providers, corporate representatives, and experts may all be deposed depending on the case.
+
+For many clients, this is the first part of litigation that feels especially real. Preparation matters. A clean record, clear timeline, and disciplined communication style make a major difference here.
+
+## Phase 7: experts, motions, and case pressure
+
+As the case matures, expert issues and motions can begin shaping leverage. Some cases need accident reconstruction, medical causation analysis, economic damages work, or industry-specific experts. At the same time, one or both sides may file motions about evidence, legal claims, or case scope.
+
+This phase often determines whether a case is likely to settle or continue toward trial.
+
+## Phase 8: mediation and settlement efforts
+
+Many Georgia injury cases go through mediation before trial. Mediation is a structured settlement process, usually with a neutral mediator, designed to test positions and try to resolve the matter.
+
+### What clients should expect at mediation
+
+- Negotiation usually moves in rounds, not one conversation.
+- Opening offers may be far from realistic value.
+- A case can settle the same day, shortly after, or not at all.
+- Trial readiness still matters, even in mediation.
+
+## Phase 9: trial preparation
+
+If the case does not resolve, trial preparation intensifies. Witness outlines are refined, exhibits are organized, motions are argued, and the story of the case must become clear enough for a jury to follow.
+
+This is where earlier discipline pays off. Cases that were organized from intake are easier to present cleanly.
+
+## Phase 10: trial, verdict, and what happens after
+
+At trial, both sides present evidence, question witnesses, and argue the case to a judge or jury. If there is a verdict or a settlement after suit, the process still does not end immediately.
+
+### Post-resolution steps can include
+
+- Final settlement paperwork.
+- Lien or subrogation review.
+- Case expenses and fee accounting.
+- Disbursement timing.
+- Potential post-trial motions or appeals in some matters.
+
+## Bottom line
+
+The Georgia litigation process is not one meeting or one court date. It is a sequence of pressure points. Strong cases are usually built through preparation, documentation, and disciplined pacing from the beginning.
+
+</section>
+
+<section className="mt-8 rounded-xl border border-primary/35 bg-primary/10 p-5">
+  <h2 className="font-serif text-2xl">Need case-specific guidance?</h2>
+  <p className="mt-2 text-sm text-mutedForeground">Talk to a lawyer now if you need help understanding where your case sits in the process.</p>
+  <div className="mt-4 flex flex-wrap gap-3">
+    <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+    <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+    <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+  </div>
+  <div className="mt-4"><DisclaimerBar compact /></div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">Related resources</h2>
+  <div className="mt-3 grid gap-2 text-sm md:grid-cols-2">
+    <Link href="/practice-areas/auto-accidents" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Georgia auto accidents practice page</Link>
+    <Link href="/practice-areas/truck-accidents" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Georgia truck accidents practice page</Link>
+    <Link href="/resources/guides/insurance-adjusters" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Insurance adjuster dos and do nots</Link>
+    <Link href="/resources/guides/medical-documentation" className="rounded-md border border-border bg-muted/30 p-3 no-underline hover:border-primary/50">Medical treatment and documentation tips</Link>
+  </div>
+</section>
+
+<section className="mt-8">
+  <h2 className="font-serif text-2xl">FAQs</h2>
+  <FAQ items={faqItems} />
+</section>
+
+<Callout tone="warning">Not legal advice. No attorney-client relationship. Do not send confidential information.</Callout>
+
+</div>
