@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { buildMetadata } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/seo/breadcrumbs';
 import { DisclaimerBar } from '@/components/layout/disclaimer';
@@ -9,11 +10,25 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 pb-24 pt-10 md:px-8">
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
-      <section className="mt-5 space-y-5 rounded-[1.5rem] border border-primary/35 bg-card/55 p-7 md:p-9">
-        <p className="text-xs uppercase tracking-[0.24em] text-primary">Firm Profile</p>
-        <h1 className="font-serif text-4xl md:text-6xl">About Dominant Law</h1>
-        <p className="max-w-3xl text-mutedForeground md:text-lg">Trial-ready Georgia plaintiff advocacy with disciplined preparation, direct communication, and evidence-first strategy.</p>
-        <DisclaimerBar />
+      <section className="mt-5 overflow-hidden rounded-[1.5rem] border border-primary/35 bg-card/55">
+        <div className="grid gap-0 lg:grid-cols-[1fr,420px]">
+          <div className="space-y-5 p-7 md:p-9">
+            <p className="text-xs uppercase tracking-[0.24em] text-primary">Firm Profile</p>
+            <h1 className="font-serif text-4xl md:text-6xl">About Dominant Law</h1>
+            <p className="max-w-3xl text-mutedForeground md:text-lg">Trial-ready Georgia plaintiff advocacy with disciplined preparation, direct communication, and evidence-first strategy.</p>
+            <DisclaimerBar />
+          </div>
+          <div className="relative min-h-[300px] border-t border-border/70 lg:min-h-full lg:border-l lg:border-t-0">
+            <Image
+              src="/images/concerned-lawyer-consultation.png"
+              alt="Attorney in consultation with a client"
+              fill
+              sizes="(max-width: 1024px) 100vw, 420px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+          </div>
+        </div>
       </section>
 
       <section className="mt-10 grid gap-5 md:grid-cols-3">

@@ -12,6 +12,8 @@ export default function Page() {
     <PillarPageTemplate
       title="Georgia Truck Accidents"
       path="/practice-areas/truck-accidents"
+      heroImageSrc="/images/truck-accident-atlanta-285.png"
+      heroImageAlt="Serious truck accident scene on Interstate 285 in Atlanta"
       summary={[
         'Commercial crash matters involve layered liability and records.',
         'Early preservation requests can materially affect recoverable evidence.',

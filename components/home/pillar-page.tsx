@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Breadcrumbs } from '@/components/seo/breadcrumbs';
 import { DisclaimerBar } from '@/components/layout/disclaimer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -19,6 +20,8 @@ interface PProps {
   notes: string;
   links: { href: string; label: string }[];
   path: string;
+  heroImageSrc?: string;
+  heroImageAlt?: string;
 }
 
 export function PillarPageTemplate(props: PProps) {
@@ -38,17 +41,33 @@ export function PillarPageTemplate(props: PProps) {
       <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Practice Areas', href: '/practice-areas' }, { label: props.title }]} />
       <div className="mt-5 grid gap-8 lg:grid-cols-[1fr,320px]">
         <article className="space-y-8">
-          <section className="space-y-5 rounded-[1.5rem] border border-primary/35 bg-card/55 p-7 md:p-9">
-            <p className="text-xs uppercase tracking-[0.24em] text-primary">Practice Area</p>
-            <h1 className="font-serif text-4xl md:text-6xl">{props.title}</h1>
-            <DisclaimerBar />
-            <ul className="list-disc space-y-2 rounded-xl border border-border bg-card/40 p-5 pl-8 text-sm text-mutedForeground md:text-base">
-              {props.summary.map((item) => <li key={item}>{item}</li>)}
-            </ul>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
-              <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
-              <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+          <section className="overflow-hidden rounded-[1.5rem] border border-primary/35 bg-card/55">
+            <div className={props.heroImageSrc ? 'grid gap-0 lg:grid-cols-[1fr,360px]' : ''}>
+              <div className="space-y-5 p-7 md:p-9">
+                <p className="text-xs uppercase tracking-[0.24em] text-primary">Practice Area</p>
+                <h1 className="font-serif text-4xl md:text-6xl">{props.title}</h1>
+                <DisclaimerBar />
+                <ul className="list-disc space-y-2 rounded-xl border border-border bg-card/40 p-5 pl-8 text-sm text-mutedForeground md:text-base">
+                  {props.summary.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild><TrackLink href={siteConfig.phoneHref} event="call_click" className="no-underline">Call now</TrackLink></Button>
+                  <Button variant="secondary" asChild><TrackLink href={siteConfig.textHref} event="text_click" className="no-underline">Text us</TrackLink></Button>
+                  <Button variant="ghost" asChild><TrackLink href="/contact" event="form_start" className="no-underline">Free case evaluation</TrackLink></Button>
+                </div>
+              </div>
+              {props.heroImageSrc ? (
+                <div className="relative min-h-[260px] border-t border-border/70 lg:min-h-full lg:border-l lg:border-t-0">
+                  <Image
+                    src={props.heroImageSrc}
+                    alt={props.heroImageAlt || props.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 360px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+                </div>
+              ) : null}
             </div>
           </section>
 
