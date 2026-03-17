@@ -12,6 +12,8 @@ export default function Page() {
     <PillarPageTemplate
       title="Georgia Slip and Fall"
       path="/practice-areas/slip-and-fall"
+      heroImageSrc="/images/arm-brace-client-consultation.png"
+      heroImageAlt="Attorney consulting with an injured client wearing an arm brace"
       summary={[
         'Premises cases turn on hazard evidence, notice, and documentation.',
         'Scene conditions can change quickly, making early records important.',

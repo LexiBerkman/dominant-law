@@ -12,6 +12,8 @@ export default function Page() {
     <PillarPageTemplate
       title="Georgia Auto Accidents"
       path="/practice-areas/auto-accidents"
+      heroImageSrc="/images/consultation-client-neck-brace.png"
+      heroImageAlt="Attorney reviewing injury claim paperwork with a client wearing a neck brace"
       summary={[
         'Focused on severe injury and liability disputes after Georgia vehicle collisions.',
         'Trial-ready preparation from intake through litigation posture.',
