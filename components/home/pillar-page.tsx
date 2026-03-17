@@ -22,6 +22,7 @@ interface PProps {
   path: string;
   heroImageSrc?: string;
   heroImageAlt?: string;
+  heroImageClassName?: string;
 }
 
 export function PillarPageTemplate(props: PProps) {
@@ -57,13 +58,13 @@ export function PillarPageTemplate(props: PProps) {
                 </div>
               </div>
               {props.heroImageSrc ? (
-                <div className="relative min-h-[260px] border-t border-border/70 lg:min-h-full lg:border-l lg:border-t-0">
+                <div className="relative h-[260px] border-t border-border/70 lg:h-[340px] lg:self-center lg:border-l lg:border-t-0">
                   <Image
                     src={props.heroImageSrc}
                     alt={props.heroImageAlt || props.title}
                     fill
                     sizes="(max-width: 1024px) 100vw, 360px"
-                    className="object-cover"
+                    className={props.heroImageClassName || 'object-cover'}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
                 </div>

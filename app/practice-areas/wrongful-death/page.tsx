@@ -12,8 +12,6 @@ export default function Page() {
     <PillarPageTemplate
       title="Georgia Wrongful Death"
       path="/practice-areas/wrongful-death"
-      heroImageSrc="/images/client-consultation-crutches.png"
-      heroImageAlt="Attorney meeting with an injured client using crutches during a legal consultation"
       summary={[
         'Sensitive, disciplined guidance for families after preventable loss.',
         'Early document organization can reduce avoidable stress later.',
